@@ -7,7 +7,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const defaultTheme = createTheme();
 
