@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
-function App() {
+const App = () => {
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        minHeight: "100vh",
+      }}
+    >
+      <Typography variant="h3" gutterBottom>
+        Welcome to My App
+      </Typography>
+      <Typography variant="body1" paragraph>
+        Explore the features and functionality of our app.
+      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          gap: 16,
+        }}
+      >
+        {!isAuthenticated ? (
+          <>
+            <Link to="/login">
+              <Button variant="contained" color="primary">
+                Login
+              </Button>
+            </Link>
+            <Link to="/register">
+              <Button variant="outlined" color="primary">
+                Register
+              </Button>
+            </Link>
+          </>
+        ) : (
+          <Link to="/dashboard">
+            <Button variant="contained" color="primary">
+              Go to Dashboard
+            </Button>
+          </Link>
+        )}
+      </Box>
+    </Box>
   );
-}
+};
 
 export default App;
